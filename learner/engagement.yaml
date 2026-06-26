@@ -1,0 +1,13 @@
+# Updated via local site — also used by nightly curator
+
+'2026-06-29':
+  lesson-01:
+    status: read
+    depth: too_shallow
+    interest: high
+    note: "the mechanics aren't very clear. **score \u2192 bin \u2192 count outcomes\
+      \ \u2192 report observed error rate \u2192 pick threshold per action**. Next\
+      \ article can stress-test it: bins too sparse, labels delayed or biased, score\
+      \ drift, newsletter vs phishing at the same score \u2014 each break pushes you\
+      \ toward explicit priors, likelihood, and full Bayesian updating instead of\
+      \ \u201Ctrust the binned frequency forever. "

@@ -1,0 +1,169 @@
+# Master curriculum spine — depth-first path to field-wide AI/ML/DS mastery.
+# Diversity (bridge slots, exploration nights) must serve an invariant on this spine.
+# Curator and grapher read this; refine learner/spine-progress.yaml each sync.
+
+goal: >
+  Build the best mental model of the entire AI/ML/data-science field — mechanism-level,
+  transfer-ready, graph-connected. Depth on the active phase is the product; biology,
+  physics, math, and hardware are inspiration and alternate formalizations, not detours.
+
+principles:
+  - Depth beats coverage — advance mastery rungs before opening new phases
+  - Every stretch topic must cite a pressure_invariant and spine phase
+  - Exploration nights (~1/week) require bridge_home to an invariant you have read
+  - At most 4/5 lessons share one topic_label on arc nights (slot 5 bridges)
+  - Mastered topics skip intro; bridges serve blind spots and graph gaps only
+
+depth_budget:
+  arc_and_bridge_nights_pct: 85
+  exploration_and_substrate_nights_pct: 15
+  defer_exploration_if_active_phase_rung_below: 3
+
+phases:
+  - id: phase-inference
+    order: 1
+    status: active
+    name: Uncertainty & inference
+    summary: Posterior reasoning, calibration, when closed form breaks → sampling
+    target_invariants: [inv-calibration]
+    target_rung: 5
+    active_arc_ids: [spam-filter-bayes]
+    curriculum_topics:
+      - Bayesian Inference
+      - Monte Carlo
+    bridge_topics:
+      - Logistic Regression
+      - Naive Bayes
+    exit_criteria:
+      - inv-calibration at mastery rung ≥ 5
+      - No high-priority gaps tagged to this phase
+      - Learner can route score vs probability vs posterior under product constraints
+
+  - id: phase-dynamics
+    order: 2
+    status: pending
+    name: Dynamics & time
+    summary: When i.i.d. fails — processes, forecasting, dependence
+    target_invariants: [inv-calibration]
+    target_rung: 4
+    curriculum_topics:
+      - Stochastic Processes
+      - Time Series
+    bridge_topics:
+      - Bayesian Inference
+    exit_criteria:
+      - Can state when folder-level θ models break under burst traffic
+      - Markov/stationarity tied to spam-campaign narrative
+
+  - id: phase-optimization
+    order: 3
+    status: pending
+    name: Optimization & constraints
+    summary: KKT, duality, margins — same geometry as thresholds and SVMs
+    target_invariants: [inv-boundary, inv-calibration]
+    target_rung: 5
+    curriculum_topics:
+      - Linear and Quadratic Optimization
+      - Support Vector Machines
+    bridge_topics:
+      - Logistic Regression
+    exit_criteria:
+      - Primal/dual story for margin vs likelihood vs constrained threshold
+
+  - id: phase-representation
+    order: 4
+    status: pending
+    name: Representation & substrate
+    summary: Bases, kernels, attention as geometry — linear algebra shared across tools
+    target_invariants: [inv-basis, inv-local-global]
+    target_rung: 5
+    curriculum_topics:
+      - SVD
+      - Transformers
+    bridge_topics:
+      - Linear Regression
+      - Neural Networks
+    exit_criteria:
+      - Eckart–Young, attention, and Fourier/wavelet in one inv-basis story
+
+  - id: phase-scale
+    order: 5
+    status: pending
+    name: Scale & language models
+    summary: Training and inference at scale — when mechanism meets production
+    target_invariants: [inv-basis, inv-calibration]
+    target_rung: 4
+    curriculum_topics:
+      - LLMs
+      - Neural Networks
+    bridge_topics:
+      - Transformers
+    exit_criteria:
+      - Scaling, context, hallucination under load — not architecture tour
+
+  - id: phase-decision
+    order: 6
+    status: pending
+    name: Decision under feedback
+    summary: Bandits, RL, causal routing — actions change the data-generating process
+    target_invariants: [inv-calibration, inv-boundary]
+    target_rung: 4
+    curriculum_topics:
+      - General Modeling
+    bridge_topics:
+      - Hypothesis Testing
+      - Correlation
+    exit_criteria:
+      - When correlation/causal claims fail routing decisions
+
+  - id: phase-substrate
+    order: 7
+    status: pending
+    name: Cross-domain substrate
+    summary: Math/physics/biology as alternate formalizations — isomorphism nights
+    target_invariants: [inv-basis, inv-local-global, inv-calibration]
+    target_rung: 3
+    curriculum_topics: []
+    bridge_topics: []
+    exit_criteria:
+      - At least 4 exploration nights with documented bridge_home edges in graph
+
+exploration_map:
+  # Far-field domains → home invariant (exploration lesson 5 must bridge here)
+  - domain: quantum computing
+    home_invariant: inv-basis
+    mechanism: Superposition/measurement ↔ basis decomposition and collapse of possibilities
+    seed_edge: E-fourier-qm
+  - domain: quantum physics
+    home_invariant: inv-calibration
+    mechanism: Measurement disturbs state ↔ graded trust vs binary observation
+  - domain: physics
+    home_invariant: inv-basis
+    mechanism: Fields, entropy, energy landscapes ↔ optimization geometry
+  - domain: biology
+    home_invariant: inv-local-global
+    mechanism: Gene regulation, local signaling ↔ local vs global model structure
+  - domain: chemistry
+    home_invariant: inv-basis
+    mechanism: Electron movement ↔ linear combinations and reaction coordinates
+  - domain: hardware
+    home_invariant: inv-local-global
+    mechanism: Memory hierarchy ↔ locality in computation and feature access
+
+refinement_rules:
+  - source: learner/gaps.yaml
+    action: Append high-priority pressures to topic-queue with phase_id of active phase
+  - source: learner/pedagogy-feedback.yaml
+    action: Honor next_night_focus; if graph_integration ≤ 2, prefer bridge or transfer night
+  - source: learner/lesson-chat.yaml
+    action: Editor anticipates; curator adds topic-queue entries when pattern repeats
+  - source: learner/hypothesis-confidence.yaml
+    action: Prioritize low learner-confidence models in active phase invariants
+  - source: learner/mastered-topics.yaml
+    action: Exclude mastered labels from bridge slot candidates
+  - source: grapher
+    action: Propose spine_phase_focus and exploration_defer in curator_guidance
+
+topic_queue_schema:
+  required_fields: [concept, pressure, phase_id, priority]
+  optional_fields: [arc_flex, invariant, bridge_home_invariant]

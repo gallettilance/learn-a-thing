@@ -1,0 +1,94 @@
+# Auto-synced from master-spine + gaps + pedagogy — do not edit by hand
+
+synced_at: '2026-06-26'
+goal: "Build the best mental model of the entire AI/ML/data-science field \u2014 mechanism-level,\
+  \ transfer-ready, graph-connected. Depth on the active phase is the product; biology,\
+  \ physics, math, and hardware are inspiration and alternate formalizations, not\
+  \ detours."
+active_phase_id: phase-inference
+active_phase_name: Uncertainty & inference
+active_phase_summary: "Posterior reasoning, calibration, when closed form breaks \u2192\
+  \ sampling"
+target_invariants:
+- inv-calibration
+target_rung: 5
+curriculum_topics:
+- Bayesian Inference
+- Monte Carlo
+bridge_topics:
+- Logistic Regression
+- Naive Bayes
+depth_budget:
+  arc_and_bridge_nights_pct: 85
+  exploration_and_substrate_nights_pct: 15
+  defer_exploration_if_active_phase_rung_below: 3
+high_priority_gaps:
+- How do we update belief after each labeled email?
+- "When folder spam rate looks like coin flips, can prior \xD7 likelihood stay in\
+  \ the same family for closed-form nightly updates?"
+- "What breaks when we have 10k word features \u2014 the count-ledger story no longer\
+  \ fits?"
+- When conjugacy and Platt scaling both feel like band-aids on 10k correlated word
+  features, how do we sample an honest posterior and know the chains converged?
+- "Campaign bursts make labeled quarantine rows non-i.i.d. \u2014 when does the folder\
+  \ coin-flip \u03B8 model become dishonest and what dependence structure must replace\
+  \ it?"
+- If the posterior integral exists but has no closed form, how many Monte Carlo draws
+  before the folder-rate or per-email probability estimate is audit-defensible?
+- How do we know the sampler has actually explored the posterior and that 500 dependent
+  draws behave like 500 independent ones?
+- "When i.i.d. draws from P(\u03B2|D) are unavailable for 10k logistic regression,\
+  \ what delivery mechanism (MCMC, Laplace, VI) approximates the same folder integral\
+  \ with an auditable footnote?"
+- "When posterior draws are not i.i.d., how do we know the chain explored P(\u03B2\
+  |D) before counsel trusts the folder-rate interval?"
+- "Why a Markov chain when reject sampling dies in 10k dimensions \u2014 and what\
+  \ mechanism makes dependent draws still target the same logistic posterior?"
+- "How do we obtain \u03B2\u207D\u02B2\u207E ~ P(\u03B2|D) honestly for 10k logistic\
+  \ regression \u2014 distinguishing ridge penalty clouds, MAP jitter, and true posterior\
+  \ sampling?"
+- "After each newly labeled quarantine email arrives, what moves first \u2014 prior\
+  \ belief, evidence, or posterior \u2014 without retraining ten thousand word weights?"
+- When the only unknown is folder spam rate on 148 of 200 labels, can prior times
+  likelihood stay in the same family for a closed-form credible band that updates
+  incrementally?
+- "High bin mean score is 0.94 but observed spam is 71% on only 25 rows \u2014 does\
+  \ Platt or isotonic remapping fix routing calibration, and what holdout discipline\
+  \ prevents leakage?"
+- "When closed-form Beta updates fail on ten thousand TF-IDF word weights, what does\
+  \ averaging many plausible \u03B2 draws buy Marcus for per-email routing \u2014\
+  \ and at what simulation variance cost?"
+- "Campaign bursts make labeled quarantine rows non-independent \u2014 when does the\
+  \ folder coin-flip rate model become dishonest and what dependence structure must\
+  \ replace it?"
+- When the only unknown is folder spam rate on 148 of 200 labels, can prior times
+  likelihood stay in the same family for a closed-form credible band Marcus can sign?
+- "High bin mean score is 0.94 but observed spam is 72% on only 25 rows \u2014 does\
+  \ Platt or isotonic remapping fix routing calibration, and what holdout discipline\
+  \ prevents leakage?"
+- "Why does Beta(148,52) plus one spam label close to Beta(149,51) \u2014 what conjugacy\
+  \ assumption makes count updates stay in the same curve family for folder rate alone?"
+- "After Beta\u2013Binomial earns folder-rate bands from counts, what breaks when\
+  \ Priya retrains ridge logistic on ten thousand correlated TF-IDF word features\
+  \ \u2014 why count closure no longer applies to weight uncertainty?"
+- "When closed-form folder-rate posteriors fail on ten thousand word weights, what\
+  \ does averaging many plausible \u03B2 draws buy Marcus for E[\u03BC(\u03B2)|D]\
+  \ \u2014 and at what simulation variance cost?"
+last_grapher_focus: "Arc day 2 \u2014 earn Beta\u2013Binomial conjugacy on the anchor:\
+  \ why Beta(148,52) plus one spam label closes to Beta(149,51), compute explicit\
+  \ 95% credible endpoints on 149/200, and name what assumption (exchangeable labels\
+  \ on \u03B8 alone) makes count updates stay in-family; one-sentence callback to\
+  \ high-bin failure only"
+pending_phases:
+- id: phase-dynamics
+  name: Dynamics & time
+  order: 2
+- id: phase-optimization
+  name: Optimization & constraints
+  order: 3
+- id: phase-representation
+  name: Representation & substrate
+  order: 4
+- id: phase-scale
+  name: Scale & language models
+  order: 5

@@ -1,0 +1,40 @@
+backlog:
+- concept: beta_binomial
+  topic_label: Bayesian Inference
+  phase_id: phase-inference
+  pressure: When the only unknown is folder spam rate on one hundred forty-nine of
+    two hundred labels after tonight's update, can prior times likelihood stay in
+    the same family for a closed-form credible band?
+  priority: high
+  invariant: inv-calibration
+- concept: platt_vs_isotonic
+  topic_label: Logistic Regression
+  phase_id: phase-inference
+  pressure: "High bin mean score is zero point nine four but observed spam is seventy-one\
+    \ percent on only twenty-five rows \u2014 does Platt or isotonic remapping fix\
+    \ routing calibration, and what holdout discipline prevents leakage?"
+  priority: medium
+  invariant: inv-calibration
+- concept: stochastic_process_markov
+  topic_label: Stochastic Processes
+  phase_id: phase-dynamics
+  pressure: "Before MCMC can make sense, what makes a sequence of states a Markov\
+    \ chain \u2014 and why does the chain forget its starting point?"
+  priority: high
+  arc_flex: sampling
+  invariant: inv-calibration
+- concept: monte_carlo_integral_intuition
+  topic_label: Monte Carlo
+  phase_id: phase-inference
+  pressure: "When closed-form posteriors fail on ten thousand word weights, what does\
+    \ averaging many plausible draws buy Marcus \u2014 and at what simulation variance\
+    \ cost?"
+  priority: high
+  invariant: inv-calibration
+- concept: conjugacy_breaks_high_d
+  topic_label: Bayesian Inference
+  phase_id: phase-inference
+  pressure: "After Beta\u2013Binomial earns folder-rate bands, what breaks when Priya\
+    \ retrains ridge logistic on ten thousand correlated TF-IDF word features?"
+  priority: high
+  invariant: inv-calibration

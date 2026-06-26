@@ -1,0 +1,155 @@
+latest:
+  date: '2026-06-26'
+  quality_scores:
+    clarity: 4
+    mechanism_depth: 3
+    graph_integration: 3
+    learning_outcomes: 4
+    narrative_continuity: 5
+  curator_guidance:
+    next_night_focus: "Arc day 2 \u2014 earn Beta\u2013Binomial conjugacy on the anchor:\
+      \ why Beta(148,52) plus one spam label closes to Beta(149,51), compute explicit\
+      \ 95% credible endpoints on 149/200, and name what assumption (exchangeable\
+      \ labels on \u03B8 alone) makes count updates stay in-family; one-sentence callback\
+      \ to high-bin failure only"
+    avoid:
+    - "Re-deriving holdout accuracy versus predict_proba versus bin calibration \u2014\
+      \ H-144/H-146 one sentence unless diagnosing a new bin table or remap attempt"
+    - "Re-opening the 0.94 versus 71% ledger as the main narrative \u2014 reference\
+      \ only"
+    - Platt or isotonic remap mechanics unless Product forces a same-week ship decision
+    - "MAP, MCMC, or full \u03B2 posterior vocabulary before conjugacy proof lands"
+    emphasize_edges:
+    - E-109
+    - E-111
+    - E-114
+    - E-115
+    - E-calibration-hub
+    mastery_rung_target: 3
+    recommended_night_type: arc
+    pressure_invariant: inv-calibration
+    spine_phase_focus: phase-inference
+    defer_exploration: true
+    topic_queue_additions:
+    - concept: calibration_mechanism_stress_test
+      pressure: "When bins go sparse, labels arrive late, scores drift, or newsletter\
+        \ and phishing share a score neighborhood, which assumption in score \u2192\
+        \ bin \u2192 count \u2192 compare breaks first \u2014 and what update language\
+        \ replaces trusting binned frequency forever?"
+      phase_id: phase-inference
+      priority: high
+    - concept: sparse_bin_wilson_noise
+      pressure: "With only twenty-five emails in the \u22650.9 bin, how wide are Wilson-style\
+        \ noise bands \u2014 and does the twenty-three-point gap (0.94 claimed vs\
+        \ 71% observed) survive honest small-n accounting?"
+      phase_id: phase-inference
+      priority: medium
+    - concept: conjugacy_breaks_high_d
+      pressure: "After Beta\u2013Binomial earns folder-rate bands from counts, what\
+        \ breaks when Priya retrains ridge logistic on ten thousand correlated TF-IDF\
+        \ word features?"
+      phase_id: phase-inference
+      priority: high
+  summary: "Tonight on the same two hundred quarantine emails you earned three separable\
+    \ audit clauses Leadership keeps collapsing: holdout accuracy cannot sign Product's\
+    \ 0.9 gate (high bin 0.94 claimed versus ~71% observed blocks auto-quarantine),\
+    \ folder spam rate updates as prior \u2192 one label \u2192 posterior on 148/52\
+    \ \u2192 149/51 without retraining word weights, and Marcus's composition memo\
+    \ does not greenlight Q-041 \u2014 the three-row routing table ties it together.\
+    \ Review by walking score \u2192 bin \u2192 count \u2192 compare on one email\
+    \ until the steps feel automatic, then rehearse which ledger column moves first\
+    \ when Marcus tags spam overnight. Tomorrow closes the Beta\u2013Binomial conjugacy\
+    \ proof with computed credible endpoints and opens what breaks when the unknown\
+    \ becomes ten thousand word weights instead of one folder rate."
+  lesson_feedback:
+  - slot: 1
+    clarity: 3
+    graph_present: false
+    issues:
+    - "Learner engagement (2026-06-29) flags depth too_shallow \u2014 score \u2192\
+      \ bin \u2192 count \u2192 compare chain still feels compressed inside a 3-slot\
+      \ merge"
+    - Six-step audit recipe ships but Priya/Product/Marcus table arrives late; learner
+      asked for 'what Priya needs' earlier in the mechanism
+    - "No Graph checkpoint despite arc encouragement \u2014 E-110 and E-calibration-hub\
+      \ activated only inline, not as explicit tool-switch section"
+    - Editor merged three curator slots; estimand preview table helps but three conceptual
+      moves compete for one sitting
+    rewrite_hint: Open Building the mechanism with Q-041 walked through all six steps
+      on one row before the four-bin table; add Graph checkpoint naming E-110 versus
+      E-calibration-hub; insert boxed 'What Priya already has vs what Product still
+      needs signed' immediately after Clause A/B/C
+  - slot: 2
+    clarity: 4
+    graph_present: false
+    issues:
+    - "Prior, likelihood, posterior earned cleanly as ledger language \u2014 strongest\
+      \ mechanism night on the arc"
+    - Which-count-moves-first table and frozen-object matrix are audit-ready
+    - "Beta(148,52)\u2192Beta(149,51) used without conjugacy proof (correct deferral)\
+      \ but credible band ~68\u201380% is asserted not computed"
+    - "No Graph checkpoint \u2014 E-111 Wilson cousin is one sentence only; E-109\
+      \ parallel estimand not named in graph section"
+    rewrite_hint: "Add Graph checkpoint contrasting E-109 (\u03B8 memo) versus E-calibration-hub\
+      \ (routing bins); tomorrow's beta_binomial slot should derive the 68\u201380%\
+      \ band numerically to close H-153"
+  - slot: 3
+    clarity: 5
+    graph_present: true
+    issues:
+    - 'Stretch bridge satisfies slot-5 contract: three-row audit table, decision fork,
+      deploy recommendation under Product constraints'
+    - Graph checkpoint names E-calibration-hub, E-109, E-110, E-111 with operational
+      tool-switch rule
+    - Correctly references high-bin gap without rebuilding full lesson-1 bin walk
+    rewrite_hint: "Keep as template for future bridge stretches; no rewrite needed\
+      \ \u2014 cite this checkpoint format when adding graph sections to arc core\
+      \ lessons"
+  hypothesis_audit:
+  - id: H-155
+    issue: Mechanism-complete; edge_refs omit new decoupling edge E-115
+    suggestion: "Append edge_refs: [E-115] \u2014 frozen predict_proba while ledger\
+      \ moves is tonight's sharpest audit picture"
+  - id: H-156
+    issue: Well-formed; depends_on chain and E-111 correct
+    suggestion: "Promote confidence to high after beta_binomial night computes explicit\
+      \ ~68\u201380% endpoints; keep evidence on 2026-06-26-lesson-02"
+  - id: H-157
+    issue: Likelihood-vs-score separation is central but edge_refs cite hub only,
+      not parallel-estimand edge
+    suggestion: "Add edge_refs: [E-109, E-115] \u2014 likelihood is label-event evidence\
+      \ on \u03B8, not \u03C3(\u03B2\xB7x)"
+  - id: H-158
+    issue: Well-formed bridge hypothesis; evidence correctly on lesson-03
+    suggestion: "Promote confidence to high \u2014 three-row deploy table and graph\
+      \ checkpoint operationalize tool-switch rule"
+  - id: H-159
+    issue: Missing optimization-objective edge_ref despite retrain-vs-posterior contrast
+      in lesson prose
+    suggestion: 'Add edge_refs: [E-114, E-113] and link to E-114 on next refinement'
+  - id: H-148
+    issue: "Estimand separation earned in lessons 2\u20133 but jsonl evidence still\
+      \ cites pre-merge lesson-04/05 ids"
+    suggestion: Normalize evidence to [2026-06-26-lesson-02, 2026-06-26-lesson-03];
+      ensure edge_refs include E-109, E-111, E-115
+  - id: H-153
+    issue: "Wilson versus credible contrast stays verbal (~68\u201380% band stated\
+      \ without derivation)"
+    suggestion: Keep confidence medium until beta_binomial night computes Beta(149,51)
+      equal-tail endpoints on anchor counts
+  - id: H-011
+    issue: Legacy likelihood hypothesis lacks invariant and depends_on for folder-ledger
+      context
+    suggestion: 'Set invariant: inv-calibration; add depends_on: [H-148]; point evidence
+      at 2026-06-26-lesson-02 Box B'
+  edges_strengthened:
+  - E-calibration-hub
+  - E-109
+  - E-110
+  - E-111
+  - E-112
+  - E-113
+  new_edge_count: 2
+carry_forward:
+- 'Tonight on the same two hundred quarantine emails you earned three separable audit
+  clauses Leadership keeps collapsing: holdout accuracy can'

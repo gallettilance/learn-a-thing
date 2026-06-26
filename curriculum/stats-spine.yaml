@@ -1,0 +1,77 @@
+# Maps statistical concepts onto narrative arc flex points.
+# Curator uses this to ensure concepts attach to the running story.
+
+domains:
+  bayesian_inference:
+    flex_point: prior
+    concepts:
+      - uncertainty_as_actionable
+      - prior_belief_state
+      - likelihood_as_evidence
+      - posterior_update
+    connects_to_anchors: [sklearn predict_proba, calibration curves]
+
+  conjugate_updates:
+    flex_point: conjugacy
+    concepts:
+      - beta_binomial
+      - closed_form_updating
+      - when_conjugacy_breaks
+    connects_to_anchors: [coin flip intuition, spam rate in folder]
+
+  sampling_methods:
+    flex_point: sampling
+    concepts:
+      - intractable_posterior
+      - rejection_sampling
+      - importance_sampling
+      - metropolis_hastings
+      - mcmc_diagnostics
+    connects_to_anchors: [PyMC traces, R-hat]
+
+  optimization_methods:
+    flex_point: optimization
+    concepts:
+      - variational_inference
+      - elbo
+      - quadratic_programming
+      - kkt_conditions
+      - svm_dual
+    connects_to_anchors: [SVM, training loss minimization]
+
+  regularization:
+    flex_point: regularization
+    concepts:
+      - prior_as_regularization
+      - map_vs_full_posterior
+      - ridge_as_gaussian_prior
+    connects_to_anchors: [sklearn Ridge, L2 penalty]
+
+week_plan:
+  week_1:
+    arc: spam-filter-bayes
+    nights:
+      - day: 1
+        focus: uncertainty and calibration
+      - day: 2
+        focus: Bayes rule and belief updating
+      - day: 3
+        focus: conjugate pairs
+      - day: 4
+        focus: intractability
+      - day: 5
+        focus: MCMC intuition
+  week_2:
+    arc: spam-filter-bayes → spam-filter-margins
+    bridge: margin-based separation for abuse detection
+    nights:
+      - day: 6
+        focus: why probabilities aren't enough for separation
+      - day: 7
+        focus: hinge loss pressure
+      - day: 8
+        focus: constrained optimization emerges
+      - day: 9
+        focus: QP and KKT
+      - day: 10
+        focus: SVM dual as earned formalism

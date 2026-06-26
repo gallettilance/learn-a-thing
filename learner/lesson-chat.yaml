@@ -1,0 +1,112 @@
+# Learner follow-up questions per lesson — editor reads for traps/checkpoints
+
+threads:
+  2026-06-29::lesson-01:
+  - role: user
+    content: it's not clear to me in the problem statement if the two emails that
+      were quarantined have the same spam score. It's also not clear where the score
+      comes from and how reliable / representative it is (does 99% mean that out of
+      100 emails it thinks are spam with 99% certainty 1 will be not spam? is that
+      a major assumption behind all this?
+    at: '2026-06-27T00:47:03+00:00'
+    topic_label: Bayesian Inference
+  - role: assistant
+    content: "Yes \u2014 the lesson intends those two emails to have the **same model\
+      \ score**. Priya\u2019s point is that identical scores can still mean very different\
+      \ things in practice: one is a newsletter someone reads every week, the other\
+      \ is credential theft. Same number, different stakes. If that wasn\u2019t obvious\
+      \ from the scene, that\u2019s fair; the mechanism only lands once you read \u201C\
+      same score from your system\u201D as the hinge of her complaint.\n\nThe score\
+      \ comes from **logistic regression on TF-IDF features** \u2014 roughly, word-importance\
+      \ weights summed into a spam probability between 0 and 1. That number is the\
+      \ model\u2019s internal estimate, not an audited fact. It reflects what the\
+      \ model learned from past labeled mail; it can be miscalibrated (overconfident\
+      \ on some score ranges, underconfident on others).\n\nYour \u201C99 out of 100\u201D\
+      \ reading is exactly the **calibration** question, and it is a major assumption\
+      \ \u2014 not a given. A raw 0.99 score only means \u201Cthe model\u2019s math\
+      \ says 99%\u201D unless you\u2019ve checked that emails scoring ~0.99 actually\
+      \ turn out spam ~99% of the time in held-out or production data. Without that\
+      \ check, Legal can\u2019t treat 0.99 as \u201C1 in 100 wrong.\u201D That\u2019\
+      s why Priya rejects bare labels: she needs **graded trust tied to observed error\
+      \ rates**, not the model\u2019s self-reported certainty. Calibration is the\
+      \ bridge between score and \u201Chow much to believe before delete vs. quarantine\
+      \ vs. human review\u201D \u2014 and tonight\u2019s lesson stops before proving\
+      \ your model crosses it."
+    at: '2026-06-27T00:47:10+00:00'
+  - role: user
+    content: it's not clear the distinction between the accuracy of the model, the
+      probs the model assigns, and what priya is actually asking for. How can we get
+      what priya is asking for?
+    at: '2026-06-27T02:01:45+00:00'
+    topic_label: Bayesian Inference
+  - role: assistant
+    content: "Three different objects get conflated if you treat them as one number.\
+      \ **Accuracy** is a rearview mirror: over a labeled batch, how often did spam/ham\
+      \ labels match reality? It averages over every decision and says nothing about\
+      \ *this* email. **Model probabilities** are the logistic-regression output per\
+      \ message \u2014 a score the model assigns from TF-IDF weights. It ranks mail\
+      \ and suggests a label, but it is the model talking to itself, not an audited\
+      \ claim about the world. **What Priya wants** is a third thing: *given this\
+      \ score, how much should we trust the action we're about to take* \u2014 delete,\
+      \ quarantine, or release \u2014 before it's irreversible.\n\nThe gap is calibration.\
+      \ Priya doesn't need \"0.87\" printed on a report; she needs \"emails that score\
+      \ around 0.87 have historically been spam about X% of the time.\" You get that\
+      \ by **binning scored mail and comparing predicted vs. observed spam rates**\
+      \ in each bin (on held-out or production-labeled data). If 0.85\u20130.90 bin\
+      \ emails are spam ~88% of the time, Legal can reason about \"roughly 1 in 8\
+      \ wrong\" for auto-quarantine at that threshold. If they're only spam ~60% of\
+      \ the time, the same score is \"maybe \u2014 human review,\" not \"probably\
+      \ fine to quarantine.\" Calibration turns the model's internal score into **observed\
+      \ error rates Priya can attach to actions**.\n\nAccuracy alone can't supply\
+      \ that because two emails with the same score carry the same workflow today\
+      \ even when one is a newsletter someone reads and one is credential theft \u2014\
+      \ aggregate \"94% right yesterday\" hides per-score trust. Raw probabilities\
+      \ don't supply it either until you've checked they match reality in each score\
+      \ range. What Priya is asking for is **graded trust tied to how often each score\
+      \ band is actually wrong**, then **different thresholds** for delete vs. quarantine\
+      \ vs. pass based on how costly each mistake is.\n\nPractically: pull quarantine/delete\
+      \ decisions from last night, group by score bins, measure true spam rate per\
+      \ bin (from labels or human review), and report *\"at threshold 0.9 we auto-actioned\
+      \ N emails; historically ~Y% of 0.9+ scores are wrong.\"* That's what you take\
+      \ to Legal \u2014 not AUC, not a single accuracy line. Bayesian notation comes\
+      \ later; tonight the mechanism is **decisions consume uncertainty, and you only\
+      \ know how much to believe once scores are checked against outcomes**."
+    at: '2026-06-27T02:01:50+00:00'
+  - role: user
+    content: 'this is what''s missing from this report: a simple process of mechanism
+      that walks through that. Then in a next article we can show how aspects of this
+      mechanism (assumptions etc) might break and need refining until we get to a
+      proper full bayesian inference perspective'
+    at: '2026-06-27T02:06:17+00:00'
+    topic_label: Bayesian Inference
+  - role: assistant
+    content: "You're right \u2014 the report should read as a **repeatable loop**,\
+      \ not a pile of terms. Start with one email that scored **0.87** and one action\
+      \ you\u2019re about to take (quarantine). Before acting, pull every email from\
+      \ the last few weeks that scored in a band around 0.87 (say **0.85\u20130.90**).\
+      \ For each, you already have or can get a ground-truth label (user complaint,\
+      \ human review, or known ham). Count how many in that band were actually spam.\
+      \ That ratio \u2014 \u201Cof emails the model scored ~0.87, **X% were spam**\u201D\
+      \ \u2014 is the number Priya and Legal need. It is **not** the model\u2019s\
+      \ 0.87; it is **observed error rate for that score band**.\n\nDo that for every\
+      \ band you care about (0.5\u20130.6, 0.85\u20130.90, 0.95\u20131.0, etc.). Plot\
+      \ **predicted score (bin midpoint)** vs **observed spam rate**. Where they line\
+      \ up, you can say \u201C0.99 means roughly 1 in 100 wrong.\u201D Where they\
+      \ don\u2019t \u2014 e.g. 0.99 bin is only 85% spam \u2014 the model is overconfident\
+      \ and Legal must not treat 0.99 as 99% trust. **Accuracy** never enters this\
+      \ step; it\u2019s one number over all emails. **Raw probabilities** are inputs.\
+      \ **Priya\u2019s deliverable** is the bin table: \u201CAt threshold 0.9 we actioned\
+      \ N emails; in the 0.9+ band, historically **Y% were wrong** (ham deleted/quarantined).\u201D\
+      \n\nThen tie **actions to bins**, not to a single cutoff. Cheap mistakes \u2192\
+      \ lower bar (human review at ~0.55 if that band is ~60% spam). Irreversible\
+      \ delete \u2192 only bands where observed error is low enough that Legal accepts\
+      \ the cost (e.g. 0.99+ with verified ~1% ham). Same label (\u201Cspam\u201D\
+      ) at different scores gets different workflows because **decisions consume uncertainty**\
+      \ \u2014 you spend trust where the observed error rate allows it.\n\nThat\u2019\
+      s the whole mechanism for tonight: **score \u2192 bin \u2192 count outcomes\
+      \ \u2192 report observed error rate \u2192 pick threshold per action**. Next\
+      \ article can stress-test it: bins too sparse, labels delayed or biased, score\
+      \ drift, newsletter vs phishing at the same score \u2014 each break pushes you\
+      \ toward explicit priors, likelihood, and full Bayesian updating instead of\
+      \ \u201Ctrust the binned frequency forever.\u201D"
+    at: '2026-06-27T02:06:21+00:00'

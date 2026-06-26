@@ -1,0 +1,192 @@
+gaps:
+- pressure: How do we update belief after each labeled email?
+  related_beat: spam-filter-bayes/day-2
+  priority: high
+  added_on: '2026-06-26'
+- pressure: "When folder spam rate looks like coin flips, can prior \xD7 likelihood\
+    \ stay in the same family for closed-form nightly updates?"
+  related_beat: spam-filter-bayes/day-3
+  priority: high
+  added_on: '2026-06-26'
+- pressure: "What breaks when we have 10k word features \u2014 the count-ledger story\
+    \ no longer fits?"
+  related_beat: spam-filter-bayes/day-4
+  priority: high
+  added_on: '2026-06-26'
+- pressure: If the posterior exists but we cannot integrate it, can we sample instead
+    of pointing at the peak?
+  related_beat: spam-filter-bayes/day-5
+  priority: medium
+  added_on: '2026-06-26'
+- pressure: When conjugacy and Platt scaling both feel like band-aids on 10k correlated
+    word features, how do we sample an honest posterior and know the chains converged?
+  related_beat: spam-filter-bayes/day-4
+  priority: high
+  added_on: '2026-06-26'
+- pressure: "Campaign bursts make labeled quarantine rows non-i.i.d. \u2014 when does\
+    \ the folder coin-flip \u03B8 model become dishonest and what dependence structure\
+    \ must replace it?"
+  related_beat: spam-filter-bayes/day-3
+  priority: high
+  added_on: '2026-06-26'
+- pressure: "Under live campaign drift, when does Platt scaling beat isotonic regression\
+    \ for recalibrating logistic bins \u2014 and how much holdout data does each need?"
+  related_beat: spam-filter-bayes/day-3
+  priority: medium
+  added_on: '2026-06-26'
+- pressure: If the posterior integral exists but has no closed form, how many Monte
+    Carlo draws before the folder-rate or per-email probability estimate is audit-defensible?
+  related_beat: spam-filter-bayes/day-5
+  priority: high
+  added_on: '2026-06-26'
+- pressure: How do we know the sampler has actually explored the posterior and that
+    500 dependent draws behave like 500 independent ones?
+  related_beat: spam-filter-bayes/day-5
+  priority: high
+  added_on: '2026-06-26'
+- pressure: "When i.i.d. draws from P(\u03B2|D) are unavailable for 10k logistic regression,\
+    \ what delivery mechanism (MCMC, Laplace, VI) approximates the same folder integral\
+    \ with an auditable footnote?"
+  related_beat: spam-filter-bayes/day-5
+  priority: high
+  added_on: '2026-06-26'
+- pressure: "Even with correct posterior predictive integration, when does model misspecification\
+    \ leave bins miscalibrated despite honest \u03B2 uncertainty propagation?"
+  related_beat: spam-filter-bayes/day-4
+  priority: medium
+  added_on: '2026-06-26'
+- pressure: "When sampling is too slow for counsel's deadline, what does variational\
+    \ inference optimize instead of the intractable integral \u2014 and what clause\
+    \ of the audit does ELBO satisfy?"
+  related_beat: spam-filter-bayes/day-6
+  priority: medium
+  added_on: '2026-06-26'
+- pressure: "When posterior draws are not i.i.d., how do we know the chain explored\
+    \ P(\u03B2|D) before counsel trusts the folder-rate interval?"
+  related_beat: spam-filter-bayes/day-5
+  priority: high
+  added_on: '2026-06-26'
+- pressure: "Why a Markov chain when reject sampling dies in 10k dimensions \u2014\
+    \ and what mechanism makes dependent draws still target the same logistic posterior?"
+  related_beat: spam-filter-bayes/day-5
+  priority: high
+  added_on: '2026-06-26'
+- pressure: "How do we obtain \u03B2\u207D\u02B2\u207E ~ P(\u03B2|D) honestly for\
+    \ 10k logistic regression \u2014 distinguishing ridge penalty clouds, MAP jitter,\
+    \ and true posterior sampling?"
+  related_beat: spam-filter-bayes/day-4
+  priority: high
+  added_on: '2026-06-26'
+- pressure: When MCMC mixing misses counsel's deadline, what does variational inference
+    optimize instead of the intractable folder integral?
+  related_beat: spam-filter-bayes/day-6
+  priority: medium
+  added_on: '2026-06-26'
+- pressure: "When random-walk Metropolis fails R-hat and ESS by counsel's deadline,\
+    \ what does variational inference optimize instead of the intractable folder integral\
+    \ \u2014 and which audit memo clause does ELBO satisfy?"
+  related_beat: spam-filter-bayes/day-6
+  priority: medium
+  added_on: '2026-06-26'
+- pressure: When random-walk MH mixes too slowly on 10k sparse logistic weights, how
+    does gradient-informed sampling (HMC/NUTS) change the local exploration mechanism
+    and its diagnostic gates?
+  related_beat: spam-filter-bayes/day-5
+  priority: medium
+  added_on: '2026-06-26'
+- pressure: "When honest P(\u03B2|D) sampling and Platt bin calibration both pass\
+    \ their gates, model misspecification can still leave per-email bins miscalibrated\
+    \ \u2014 what evidence triggers model change rather than another remap?"
+  related_beat: spam-filter-bayes/day-4
+  priority: medium
+  added_on: '2026-06-26'
+- pressure: "After each newly labeled quarantine email arrives, what moves first \u2014\
+    \ prior belief, evidence, or posterior \u2014 without retraining ten thousand\
+    \ word weights?"
+  related_beat: spam-filter-bayes/day-2
+  priority: high
+  added_on: '2026-06-26'
+- pressure: When the only unknown is folder spam rate on 148 of 200 labels, can prior
+    times likelihood stay in the same family for a closed-form credible band that
+    updates incrementally?
+  related_beat: spam-filter-bayes/day-2
+  priority: high
+  added_on: '2026-06-26'
+- pressure: "High bin mean score is 0.94 but observed spam is 71% on only 25 rows\
+    \ \u2014 does Platt or isotonic remapping fix routing calibration, and what holdout\
+    \ discipline prevents leakage?"
+  related_beat: spam-filter-bayes/day-1
+  priority: high
+  added_on: '2026-06-26'
+- pressure: "Sparse quarantine bins may have only a few dozen emails \u2014 when does\
+    \ Wilson-style interval width on a single bin blur miscalibration versus honest\
+    \ small-n noise?"
+  related_beat: spam-filter-bayes/day-1
+  priority: medium
+  added_on: '2026-06-26'
+- pressure: "When closed-form Beta updates fail on ten thousand TF-IDF word weights,\
+    \ what does averaging many plausible \u03B2 draws buy Marcus for per-email routing\
+    \ \u2014 and at what simulation variance cost?"
+  related_beat: spam-filter-bayes/day-5
+  priority: high
+  added_on: '2026-06-26'
+- pressure: "Campaign bursts make labeled quarantine rows non-independent \u2014 when\
+    \ does the folder coin-flip rate model become dishonest and what dependence structure\
+    \ must replace it?"
+  related_beat: spam-filter-bayes/day-4
+  priority: high
+  added_on: '2026-06-26'
+- pressure: When the only unknown is folder spam rate on 148 of 200 labels, can prior
+    times likelihood stay in the same family for a closed-form credible band Marcus
+    can sign?
+  related_beat: spam-filter-bayes/day-1
+  priority: high
+  added_on: '2026-06-26'
+- pressure: "High bin mean score is 0.94 but observed spam is 72% on only 25 rows\
+    \ \u2014 does Platt or isotonic remapping fix routing calibration, and what holdout\
+    \ discipline prevents leakage?"
+  related_beat: spam-filter-bayes/day-1
+  priority: high
+  added_on: '2026-06-26'
+- pressure: "With only 25 emails in the top bin, how wide are Wilson-style noise bands\
+    \ \u2014 and does the 22-point gap survive honest small-n accounting?"
+  related_beat: spam-filter-bayes/day-1
+  priority: medium
+  added_on: '2026-06-26'
+- pressure: "When closed-form posteriors fail on ten thousand word weights, what does\
+    \ averaging many plausible \u03B2 draws buy Marcus for folder composition \u2014\
+    \ and at what simulation variance cost?"
+  related_beat: spam-filter-bayes/day-1
+  priority: medium
+  added_on: '2026-06-26'
+- pressure: "Why does Beta(148,52) plus one spam label close to Beta(149,51) \u2014\
+    \ what conjugacy assumption makes count updates stay in the same curve family\
+    \ for folder rate alone?"
+  related_beat: spam-filter-bayes/day-2
+  priority: high
+  added_on: '2026-06-26'
+- pressure: "High bin mean score is 0.94 but observed spam is 71% on only 25 rows\
+    \ \u2014 does Platt or isotonic remapping restore bin honesty for the 0.9 gate,\
+    \ and what holdout discipline prevents leakage?"
+  related_beat: spam-filter-bayes/day-2
+  priority: medium
+  added_on: '2026-06-26'
+- pressure: "After Beta\u2013Binomial earns folder-rate bands from counts, what breaks\
+    \ when Priya retrains ridge logistic on ten thousand correlated TF-IDF word features\
+    \ \u2014 why count closure no longer applies to weight uncertainty?"
+  related_beat: spam-filter-bayes/day-3
+  priority: high
+  added_on: '2026-06-26'
+- pressure: "When closed-form folder-rate posteriors fail on ten thousand word weights,\
+    \ what does averaging many plausible \u03B2 draws buy Marcus for E[\u03BC(\u03B2\
+    )|D] \u2014 and at what simulation variance cost?"
+  related_beat: spam-filter-bayes/day-5
+  priority: high
+  added_on: '2026-06-26'
+- pressure: "Wilson-style intervals on sparse high-score bins (n=25 at \u22650.9)\
+    \ \u2014 when is bin noise alone enough to block auto-quarantine versus when direction\
+    \ of overconfidence is already audit-sufficient?"
+  related_beat: spam-filter-bayes/day-2
+  priority: medium
+  added_on: '2026-06-26'
+last_updated: '2026-06-26'

@@ -1,0 +1,47 @@
+# Prerequisite side quests — beats deferred until dependencies are mastered.
+# Also printed to console during nightly runs.
+
+log:
+- date: '2026-06-29'
+  replan_attempt: 1
+  dry_run: true
+  side_quests:
+  - slot: 5
+    blocked_concept: posterior_intuition
+    blocked_topic: Monte Carlo
+    effective_concept: null
+    effective_topic: Stochastic Processes
+    blocked_chain:
+    - posterior_intuition
+    - Stochastic Processes
+    summary: "Deferred: posterior_intuition blocked by [posterior_intuition \u2192\
+      \ Stochastic Processes] \u2192 teach Stochastic Processes tonight"
+- date: '2026-06-30'
+  replan_attempt: 1
+  dry_run: true
+  side_quests:
+  - slot: 5
+    blocked_concept: posterior_intuition
+    blocked_topic: Monte Carlo
+    effective_concept: null
+    effective_topic: Stochastic Processes
+    blocked_chain:
+    - posterior_intuition
+    - Stochastic Processes
+    summary: "Deferred: posterior_intuition blocked by [posterior_intuition \u2192\
+      \ Stochastic Processes] \u2192 teach Stochastic Processes tonight"
+- date: '2026-07-01'
+  replan_attempt: 1
+  dry_run: true
+  side_quests:
+  - slot: 5
+    blocked_concept: posterior_intuition
+    blocked_topic: Monte Carlo
+    effective_concept: null
+    effective_topic: Stochastic Processes
+    blocked_chain:
+    - posterior_intuition
+    - Stochastic Processes
+    summary: "Deferred: posterior_intuition blocked by [posterior_intuition \u2192\
+      \ Stochastic Processes] \u2192 teach Stochastic Processes tonight"
+last_updated: '2026-07-01'

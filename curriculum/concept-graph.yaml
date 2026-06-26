@@ -1,0 +1,187 @@
+# Typed concept graph — pressure invariants and cross-topic edges.
+# Curator activates edges on bridge/transfer nights; grapher appends to learner/concept-edges.jsonl.
+
+invariants:
+  - id: inv-calibration
+    name: Calibrated probability
+    statement: >
+      A score is actionable only when predicted rates match observed rates —
+      decisions consume graded trust, not binary labels.
+    topics: [Bayesian Inference, Logistic Regression, General Modeling]
+
+  - id: inv-boundary
+    name: Decision boundary geometry
+    statement: >
+      Classification is choosing a boundary in feature space; different tools
+      optimize different objectives on the same geometry.
+    topics: [Logistic Regression, Support Vector Machines, KNN, Naive Bayes]
+
+  - id: inv-basis
+    name: Best low-dimensional explanation
+    statement: >
+      Many methods find directions or bases that explain variance or signal —
+      regression, SVD, Fourier, and wavelets share this substrate.
+    topics: [Linear Regression, SVD, Correlation]
+
+  - id: inv-local-global
+    name: Local vs global geometry
+    statement: >
+      Some tools assume global structure (linear boundary, globular clusters);
+      others adapt locally (KNN, kernels, density).
+    topics: [KNN, Clustering, Support Vector Machines, Distance Functions]
+
+mastery_rungs:
+  1: Trap recognition — why the obvious approach breaks
+  2: Mechanism reconstruction — rebuild without notes
+  3: Failure modes — when the model lies
+  4: Variant selection — L1 vs L2, kernel vs linear, hard vs soft
+  5: Tool routing — given pressure, pick the method and justify
+  6: Transfer — same story, swap tool; name what changed in the objective
+
+night_types:
+  arc:
+    description: Depth within active narrative arc
+    default_slots: [open, deepen, deepen, deepen, earn_term]
+  bridge:
+    description: Connect two topics on the same anchor — slots 4–5 contrast tools
+    default_slots: [open, deepen, deepen, bridge, bridge]
+    require_edge_activation: true
+  transfer:
+    description: Same pressure; learner must choose among tools by slot 5
+    default_slots: [open, deepen, deepen, deepen, bridge]
+    withhold_tool_until_slot: 3
+  substrate:
+    description: One mathematical substrate across application domains
+    default_slots: [open, deepen, deepen, bridge, earn_term]
+  exploration:
+    description: Far-field topic with one bridge home edge
+    require_bridge_home: true
+
+weekly_schedule:
+  # weekday 0=Monday … 6=Sunday (matches Python date.weekday())
+  2: bridge      # Wednesday
+  4: transfer    # Friday (alternate weeks — curator checks last transfer date)
+  6: exploration # Sunday
+
+seed_edges:
+  - id: E-calibration-hub
+    from_topic: Logistic Regression
+    to_topic: Bayesian Inference
+    edge_type: calibration_link
+    statement: >
+      Logistic sigmoid outputs are not automatically calibrated probabilities;
+      Bayesian posterior updating and reliability diagrams address the same pressure.
+    hypothesis_ids: [H-002, H-005, H-011]
+
+  - id: E-svm-logreg-objective
+    from_topic: Support Vector Machines
+    to_topic: Logistic Regression
+    edge_type: same_pressure
+    statement: >
+      On separable data both find linear boundaries, but SVM maximizes margin
+      while logistic regression maximizes likelihood — different objectives, often different lines.
+    hypothesis_ids: [H-112, H-110]
+
+  - id: E-svm-knn-1d
+    from_topic: Support Vector Machines
+    to_topic: KNN
+    edge_type: same_geometry
+    statement: >
+      In 1D separable data, SVM and KNN (k=1) often place the boundary at the
+      midpoint between closest opposite-class points.
+    hypothesis_ids: [H-111]
+
+  - id: E-knn-calibration
+    from_topic: KNN
+    to_topic: Logistic Regression
+    edge_type: calibration_link
+    statement: >
+      KNN probabilities from neighbor voting require calibration (distance weighting,
+      k choice); logistic sigmoid is one parametric calibration path.
+    hypothesis_ids: [H-098, H-099]
+
+  - id: E-linreg-svd
+    from_topic: Linear Regression
+    to_topic: SVD
+    edge_type: same_algebra
+    statement: >
+      OLS finds directions in column space; SVD/PCA finds orthogonal directions of
+      maximum variance — same linear algebra, different residual geometry.
+    hypothesis_ids: [H-093, H-095, H-117]
+
+  - id: E-nb-bayes
+    from_topic: Naive Bayes
+    to_topic: Bayesian Inference
+    edge_type: generalizes
+    statement: >
+      Naive Bayes is generative posterior updating with a conditional-independence
+      assumption; full Bayes relaxes or models dependence.
+    hypothesis_ids: [H-106, H-107]
+
+  - id: E-kmeans-median
+    from_topic: Clustering
+    to_topic: Distance Functions
+    edge_type: limit_of
+    statement: >
+      K-means centers are means under L2; switching to Manhattan distance makes
+      medians optimal — the center follows the loss.
+    hypothesis_ids: [H-037, H-080]
+
+  - id: E-fourier-qm
+    from_topic: Quantum Physics
+    to_topic: SVD
+    edge_type: isomorphism
+    statement: >
+      State superposition and measurement connect to basis decomposition;
+      Fourier/wavelet bases are the functional analogue of eigenvector bases.
+    hypothesis_ids: []
+
+  - id: E-markov-mcmc
+    from_concept: markov_chain
+    from_topic: Stochastic Processes
+    to_concept: mcmc_intuition
+    to_topic: Monte Carlo
+    edge_type: prerequisite
+    statement: >
+      MCMC builds a Markov chain whose stationary distribution is the target posterior;
+      without understanding chain structure, stationarity, and mixing, MCMC is a black box.
+    hypothesis_ids: []
+
+  - id: E-markov-mcmc-diag
+    from_concept: markov_chain
+    from_topic: Stochastic Processes
+    to_concept: mcmc_diagnostics
+    to_topic: Monte Carlo
+    edge_type: prerequisite
+    statement: >
+      Diagnosing MCMC convergence (R-hat, ESS, trace plots) requires knowing what
+      "the chain mixed" means — a concept grounded in Markov chain mixing times.
+    hypothesis_ids: []
+
+  - id: E-stochastic-markov
+    from_topic: Stochastic Processes
+    to_topic: Monte Carlo
+    edge_type: prerequisite
+    statement: >
+      Monte Carlo simulation and MCMC samplers both assume or require understanding
+      of stochastic process structure; Stochastic Processes is a prerequisite topic.
+    hypothesis_ids: []
+
+bridge_night_templates:
+  - name: classification_triangle
+    invariant: inv-boundary
+    topics: [Logistic Regression, Support Vector Machines, KNN]
+    anchor: spam-filter
+    pressure: Priya needs the same emails classified — compare what each tool optimizes
+
+  - name: calibration_path
+    invariant: inv-calibration
+    topics: [Logistic Regression, Bayesian Inference, KNN]
+    anchor: spam-filter
+    pressure: Turn model scores into actions Legal will accept
+
+  - name: naive_to_posterior
+    invariant: inv-calibration
+    topics: [Naive Bayes, Bayesian Inference]
+    anchor: spam-filter
+    pressure: Keyword features update belief — generative vs full posterior

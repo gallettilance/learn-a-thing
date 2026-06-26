@@ -1,0 +1,45 @@
+# Agent playbook — stable teach / plan / consolidate rules (orchestrator injects sections by role).
+# Human-readable detail: learner/teaching-style.md
+
+version: 1
+
+teaching:
+  goal: "Durable mental models — reader reconstructs the idea from the problem afterward."
+  motivation_ladder:
+    - "Concrete situation (Scene card)"
+    - "Named unknown in English before symbols"
+    - "Why the obvious fix fails"
+    - "Mechanism in plain language"
+    - "## Terms tonight (3–8 definitions)"
+    - "Symbols only after Terms tonight"
+  hard_failures:
+    - "Notation or acronyms before Terms tonight"
+    - "Assumed prior nights without Scene card recap"
+    - "More than one new conceptual move per core lesson (split or extended: true)"
+    - "night_thread / carry forward with undefined symbols or semicolon soup"
+  word_budgets:
+    core: [1500, 2500]
+    stretch: [1200, 1800]
+    extended: [3500, 4500]
+  standalone: "Every lesson is a YouTube-style script — Scene card + Terms tonight even when merged."
+  gentle_intro: "True beginner topics (not seeded/mastered): scaffold from familiar tools before formalism; intro_pacing: gentle."
+
+planning:
+  night_types: [arc, bridge, transfer, substrate, exploration]
+  topic_diversity: "At most 4/5 planning slots share topic_label; slot 5 bridge/diversity unless exploration night."
+  spine: "Cite spine_phase; pressure_invariant from active phase; defer exploration if rung below depth_budget."
+  prerequisites: "Conservative — recurse to unmet prerequisites before dependent concepts."
+  complexity: "One conceptual move per core slot; defer sub-beats to topic_queue; night_thread ~40 words plain English."
+
+consolidation:
+  published_range: [2, 5]
+  merge_rule: "Same-topic planning slots → one narrative arc; omit repeated Scene cards and digressions."
+  stretch_rule: "Always one standalone stretch lesson (optional: true) — bridge/diversity slot never merged into arc core."
+  metadata: "Set merged_from_slots and concepts_covered on each published lesson."
+
+quality:
+  programmatic: "lib/lesson_lint.py enforces Terms order, word counts, stretch/core flags, merged metadata."
+  editor_escalation: "Use review_summary.escalate_to when lint cannot be fixed by editing alone."
+
+# Staging queue — memory consolidator appends repeated lesson_feedback patterns (3+ nights).
+proposed_rules: []

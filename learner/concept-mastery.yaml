@@ -1,0 +1,8 @@
+# Concept-level mastery — finer-grained than topic mastery.
+# Curator/prerequisite gate checks these before planning lessons that depend on them.
+# Format: concept_id -> {mastered: bool, mastered_at: YYYY-MM-DD, source: str, note: str}
+#
+# Sources: "user" (site confirmation), "pipeline" (auto-set after lesson), "profile" (seeded)
+# Conservative default: absent = NOT mastered.
+
+concepts: {}

@@ -1,0 +1,23 @@
+date: '2026-06-29'
+quality_scores:
+  clarity: 4
+  mechanism_depth: 4
+  graph_integration: 3
+  learning_outcomes: 4
+  narrative_continuity: 5
+curator_guidance:
+  next_night_focus: "Deepen calibration \u2014 scores vs decisions on identical emails"
+  avoid:
+  - Re-explaining accuracy
+  emphasize_edges:
+  - E-calibration-hub
+  mastery_rung_target: 3
+  recommended_night_type: bridge
+  pressure_invariant: inv-calibration
+summary: 'Dry-run: calibration invariant linked to spam-filter arc; schedule a bridge
+  night contrasting score types.'
+lesson_feedback: []
+hypothesis_audit: []
+edges_strengthened:
+- E-calibration-hub
+new_edge_count: 0

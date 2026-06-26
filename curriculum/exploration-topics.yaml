@@ -1,0 +1,78 @@
+# One night per week is an exploration topic — far from the stats/ML spine.
+# Curator schedules these on the 7th night of each calendar week (Sunday run → week label).
+# Each entry must bridge home via bridge_home_invariant (see curriculum/master-spine.yaml exploration_map).
+
+rotation:
+  - week: 1
+    topic_label: Quantum Computing
+    domain: quantum computing
+    bridge_home_invariant: inv-basis
+    bridge_mechanism: Superposition/measurement ↔ basis decomposition and collapse of possibilities
+    seed_edge: E-fourier-qm
+    example_anchors:
+      - "When classical simulation of combinatorial search fails, what does superposition change?"
+      - "Why measurement collapses what you needed for parallel exploration"
+  - week: 2
+    topic_label: Quantum Physics
+    domain: quantum physics
+    bridge_home_invariant: inv-calibration
+    bridge_mechanism: Measurement disturbs state ↔ graded trust vs binary observation
+    example_anchors:
+      - "Why measurement disturbs what you thought you knew about the system"
+      - "Superposition as unresolved commitment before observation"
+  - week: 3
+    topic_label: Thermodynamics
+    domain: physics
+    bridge_home_invariant: inv-basis
+    bridge_mechanism: Entropy and energy landscapes ↔ optimization geometry and free-energy objectives
+    example_anchors:
+      - "Why heat flows and what entropy is actually counting"
+  - week: 4
+    topic_label: Molecular Biology
+    domain: biology
+    bridge_home_invariant: inv-local-global
+    bridge_mechanism: Gene regulation ↔ local vs global model structure
+    example_anchors:
+      - "How a cell knows which genes to express and when"
+  - week: 5
+    topic_label: Organic Chemistry
+    domain: chemistry
+    bridge_home_invariant: inv-basis
+    bridge_mechanism: Electron movement ↔ linear combinations and reaction coordinates
+    example_anchors:
+      - "Why electron movement explains reaction outcomes"
+  - week: 6
+    topic_label: Computer Architecture
+    domain: hardware
+    bridge_home_invariant: inv-local-global
+    bridge_mechanism: Cache hierarchy ↔ locality in computation and feature access
+    example_anchors:
+      - "Why the CPU cache hierarchy exists and what it optimizes"
+  - week: 7
+    topic_label: Electromagnetism
+    domain: physics
+    bridge_home_invariant: inv-basis
+    bridge_mechanism: Fields as fundamental ↔ basis decomposition of forces
+    example_anchors:
+      - "Why fields are more fundamental than forces at a distance"
+  - week: 8
+    topic_label: Biochemistry
+    domain: biology
+    bridge_home_invariant: inv-local-global
+    bridge_mechanism: Enzyme catalysis ↔ local mechanism vs global equilibrium
+    example_anchors:
+      - "How enzymes lower activation energy without changing equilibrium"
+
+rules:
+  - Exploration nights use a NEW narrative anchor unrelated to the active stats arc
+  - All 5 lessons share the exploration topic_label for that week
+  - Lesson 5 must include an explicit bridge_home to bridge_home_invariant
+  - Do not reference spam-filter or ML arc characters on exploration nights unless bridging home
+  - Rotate through the pool; avoid repeating until all weeks used
+  - Defer exploration if active spine phase mastery rung < depth_budget.defer_exploration_if_active_phase_rung_below
+  - Learner interests: quantum computing, quantum physics, physics, chemistry, biology, hardware
+
+schedule:
+  # ISO week mod 8 → rotation index; Sunday night pipeline uses upcoming week
+  day_of_week: 6  # 0=Mon … 6=Sun — exploration night
+  lessons_per_night: 5

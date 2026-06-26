@@ -1,0 +1,72 @@
+date: '2026-06-26'
+generated_at: '2026-06-26T23:21:55'
+arc:
+  id: spam-filter-bayes
+  topic_label: Bayesian Inference
+  title: "Building a spam filter \u2014 from gut feel to full posterior"
+  current_day: 1
+  beat: Why point estimates fail the product owner
+spine:
+  phase_id: phase-inference
+  phase_summary: "Posterior reasoning, calibration, when closed form breaks \u2192\
+    \ sampling"
+  mastery_rung: null
+  pressure_invariant: inv-calibration
+pedagogy:
+  next_night_focus: "Day 2 arc beat \u2014 when one newly labeled quarantine email\
+    \ arrives, name prior, likelihood, and posterior as folder-belief update language\
+    \ on 148/200 without retraining ten thousand word weights; open by showing which\
+    \ count moves first"
+  avoid:
+  - "Re-deriving holdout accuracy versus predict_proba versus bin calibration \u2014\
+    \ one-sentence H-144/H-146 reference only"
+  - Re-opening the 0.94 versus 72% high-bin ledger unless diagnosing a new bin table
+    or remap attempt
+  - "Full Beta\u2013Binomial conjugacy proof before Bayes rule earns prior, likelihood,\
+    \ and posterior names"
+  - Platt or isotonic remap mechanics unless Product forces a same-week ship decision
+  emphasize_edges:
+  - E-calibration-hub
+  - E-109
+  - E-110
+  - E-111
+  recommended_night_type: arc
+learner:
+  true_beginner_topics:
+  - Bayesian Inference
+  - Monte Carlo
+  - Stochastic Processes
+  mastered_topics:
+  - Naive Bayes
+  blind_spots:
+  - Bayesian inference (full posterior reasoning, MCMC/VI, not just MAP)
+  - Monte Carlo methods (variance reduction, when simulation beats closed form)
+  - Stochastic processes (Markov structure, stationarity, ergodicity)
+  - Time series (forecasting vs inference, temporal dependence)
+  - Linear and quadratic optimization (KKT, duality, constrained QP)
+  - Transformers (attention as mechanism, not architecture tour)
+  - LLMs (scaling, inference, alignment pressures in production)
+  - "Quantum computing (qubits, gates, measurement \u2014 bridge from linear algebra)"
+consolidation:
+  published_range:
+  - 2
+  - 5
+  stretch_slots:
+  - 5
+carry_forward:
+- 'Tonight on the same two hundred quarantine emails you earned three separable audit
+  clauses Leadership keeps collapsing: holdout accuracy can'
+open_gaps:
+- How do we update belief after each labeled email?
+- "When folder spam rate looks like coin flips, can prior \xD7 likelihood stay in\
+  \ the same family for closed-form nightly updates?"
+- "What breaks when we have 10k word features \u2014 the count-ledger story no longer\
+  \ fits?"
+- If the posterior exists but we cannot integrate it, can we sample instead of pointing
+  at the peak?
+- When conjugacy and Platt scaling both feel like band-aids on 10k correlated word
+  features, how do we sample an honest posterior and know the chains converged?
+suggested_night_type: arc
+engagement:
+  recommended_mode: full
+  last_night_unread: 0

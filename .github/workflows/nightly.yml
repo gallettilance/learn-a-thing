@@ -1,0 +1,21 @@
+# Optional GitHub Actions fallback (requires cloud Cursor API).
+# Primary scheduling: local launchd — see scripts/install-schedule.sh
+
+name: Nightly Learning Pipeline
+
+on:
+  workflow_dispatch:
+
+jobs:
+  nightly:
+    runs-on: ubuntu-latest
+    if: false  # disabled — use local pipeline
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install -r orchestrator/requirements.txt -r site/requirements.txt
+      - run: python orchestrator/nightly.py --cloud --force
+        env:
+          CURSOR_API_KEY: ${{ secrets.CURSOR_API_KEY }}

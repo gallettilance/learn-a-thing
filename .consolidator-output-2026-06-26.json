@@ -1,0 +1,145 @@
+{
+  "date": "2026-06-26",
+  "phase": "ship_review",
+  "published_lesson_count": 3,
+  "lesson_groups": [
+    {
+      "publish_slot": 1,
+      "topic_label": "Bayesian Inference",
+      "source_slots": [
+        1,
+        2,
+        3
+      ],
+      "concepts": [
+        "holdout_accuracy_is_wrong_memo_object_for_routing",
+        "predict_proba_is_a_per_email_claim_not_folder_composition",
+        "reliability_diagram_as_bin_frequency_audit"
+      ],
+      "narrative_spine": "One story on the fixed two-hundred-email queue: name why holdout accuracy fails Product at the zero point nine threshold, trace Priya's zero point nine four on Q-041 to an honest per-email claim, then walk score-to-bin-to-count-to-observed-rate so the zero point nine four versus seventy-one percent gap is mechanism\u2014not vibes.",
+      "section_outline": [
+        "Scene: quarantine queue, 148 spam / 52 ham, Product wants 0.9 auto-quarantine, Legal wants proof",
+        "Why ninety-one point five percent accuracy is the wrong memo object for routing",
+        "Where Q-041's score comes from and what honest would mean on that row",
+        "Building the mechanism: sort scores into bins, count outcomes, compare claimed to observed",
+        "The high-bin gap (0.94 claimed vs 71% observed) as audit proof the model is lying to Product"
+      ],
+      "omit_from_group": [
+        "Repeated Scene cards after the opening",
+        "Folder spam rate or \u03b8 vocabulary",
+        "Wilson intervals on sparse bins",
+        "Platt or isotonic remap mechanics",
+        "Beta arithmetic or posterior update language",
+        "Side tangent on TF-IDF beyond one Terms tonight line"
+      ],
+      "optional": false,
+      "extended": true,
+      "target_words": [
+        2700,
+        4000
+      ],
+      "merged": true
+    },
+    {
+      "publish_slot": 2,
+      "topic_label": "Bayesian Inference",
+      "source_slots": [
+        4
+      ],
+      "concepts": [
+        "folder_spam_rate_as_separate_estimand_from_per_email_scores"
+      ],
+      "narrative_spine": "Same 200 rows, different memo: Marcus tags one more spam row overnight\u2014prior from 148/52 ledger, likelihood from the single label event, posterior 149/51 signed tonight without retraining TF-IDF weights; frozen routing scores stay on a parallel audit track.",
+      "section_outline": [
+        "Story so far: calibration bins answered, folder rate is the new unknown",
+        "Which ledger column moves first when Marcus tags Q-088 spam",
+        "Prior, likelihood, posterior as folder-belief language on counts",
+        "Beta(148,52) + 1 spam \u2192 Beta(149,51) count update without retrain",
+        "Memo template Marcus signs; what stays frozen on the routing column"
+      ],
+      "omit_from_group": [
+        "Re-deriving the high-score bin table from lesson one",
+        "Holdout accuracy re-litigation",
+        "Conjugacy proof or full credible-interval arithmetic",
+        "Platt or isotonic remap walkthrough"
+      ],
+      "optional": false,
+      "extended": true,
+      "target_words": [
+        2200,
+        2800
+      ]
+    },
+    {
+      "publish_slot": 3,
+      "topic_label": "Logistic Regression",
+      "source_slots": [
+        5
+      ],
+      "concepts": [
+        "tool_routing_under_inv_calibration"
+      ],
+      "narrative_spine": "Stretch bridge on the same 200 emails: Leadership collapses three dashboard numbers\u2014route Product's 0.9 gate to bin audit, Marcus's folder memo to Beta ledger, dev accuracy to internal ranking only; name the clause before opening the spreadsheet.",
+      "section_outline": [
+        "Scene: VP asks why folder rate and Q-041 score aren't interchangeable",
+        "Three-row audit table under inv-calibration pressure",
+        "Decision fork: Marcus clause vs Product clause on Q-041 deploy",
+        "Deploy recommendation and graph checkpoint (E-109, E-110, E-calibration-hub)",
+        "Stretch close: pick the audit clause, then pick the tool"
+      ],
+      "omit_from_group": [
+        "Full reliability-diagram re-derivation from lesson one",
+        "Beta posterior arithmetic replay from lesson two",
+        "Platt or isotonic remap mechanics"
+      ],
+      "optional": true,
+      "extended": false,
+      "target_words": [
+        1000,
+        1400
+      ]
+    }
+  ],
+  "omit_from_narrative": [
+    "Repeated full Scene-card cold opens inside merged groups\u2014one Scene per published lesson",
+    "Wilson-style intervals on sparse quarantine bins",
+    "Platt scaling or isotonic regression remap mechanics",
+    "Beta\u2013Binomial conjugacy proof",
+    "MCMC or full credible-interval derivation tonight",
+    "Accuracy-as-routing-metric re-litigation after lesson one settles it"
+  ],
+  "defer_to_topic_queue": [
+    "platt_vs_isotonic",
+    "beta_binomial_conjugacy_proof",
+    "sparse_bin_wilson_noise",
+    "weight_uncertainty_mcmc"
+  ],
+  "group_assessments": [
+    {
+      "publish_slot": 1,
+      "pass": true,
+      "narrative_cohesive": true,
+      "issues": []
+    },
+    {
+      "publish_slot": 2,
+      "pass": true,
+      "narrative_cohesive": true,
+      "issues": []
+    },
+    {
+      "publish_slot": 3,
+      "pass": true,
+      "narrative_cohesive": true,
+      "issues": []
+    }
+  ],
+  "review_summary": {
+    "pass": true,
+    "escalate_to": [],
+    "rationale": "All three published lessons honor the approved lesson_groups. Lesson 1 reads as one merged calibration arc (slots 1\u20133): wrong memo object \u2192 per-email score claim \u2192 six-step bin audit ending on the 0.94 vs 71% gap, with folder-rate preview deferred cleanly. Lesson 2 stands alone on slot 4 folder-belief update, connects via Story so far without re-deriving bins, and keeps routing scores frozen. Lesson 3 remains a separate optional stretch on slot 5\u2014tool routing under inv-calibration, ~1.5k words, graph checkpoint intact. Editor polish tightened lesson 1 (six-step recipe, stakeholder table, duplicate section removed) without splitting the merged spine or absorbing stretch into core.",
+    "curator_feedback": "",
+    "teacher_feedback": "",
+    "editor_feedback": ""
+  }
+}

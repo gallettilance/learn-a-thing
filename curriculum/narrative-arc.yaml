@@ -1,0 +1,219 @@
+active_arc:
+  id: spam-filter-bayes
+  topic_label: Bayesian Inference
+  title: "Building a spam filter \u2014 from gut feel to full posterior"
+  anchor: Binary email classification with uncertainty you can act on
+  setting: 'You inherit a legacy keyword filter; leadership wants calibrated risk,
+    not just labels. The product owner needs to know *how sure* before auto-quarantining
+    mail or escalating to humans.
+
+    '
+  characters:
+  - legacy_rule_engine
+  - product_owner_who_wants_probabilities
+  - you_the_ml_engineer
+  current_day: 1
+  flex_points:
+    prior: What belief do we start with before seeing new emails?
+    likelihood: How does evidence move that belief?
+    conjugacy: When can we update in closed form?
+    sampling: When closed form breaks, what do we do?
+    regularization: What happens when we have too many features?
+    optimization: When the posterior is intractable, what are we optimizing instead?
+  planned_beats:
+  - day: 1
+    beat: Why point estimates fail the product owner
+    concepts:
+    - uncertainty
+    - calibration
+    - posterior_intuition
+    night_lessons:
+    - slot: 1
+      pressure: The product owner rejects spam/not-spam without a confidence score
+      slot_role: open
+    - slot: 2
+      pressure: "Two analysts disagree on the same email \u2014 we need a reproducible\
+        \ belief"
+      slot_role: deepen
+    - slot: 3
+      pressure: "A 51% spam score and 99% spam score get the same action \u2014 that's\
+        \ wrong"
+      slot_role: deepen
+    - slot: 4
+      pressure: 'Leadership asks: what would it take to say we''re 95% sure?'
+      slot_role: deepen
+    - slot: 5
+      pressure: We need a language for uncertainty that connects to decisions
+      slot_role: earn_term
+    terminology_earned:
+    - probability
+    - calibration
+    - uncertainty
+  - day: 2
+    beat: Updating beliefs email by email
+    concepts:
+    - bayes_rule
+    - prior
+    - likelihood
+    - posterior
+    night_lessons:
+    - slot: 1
+      pressure: "New phishing campaign \u2014 our keyword list is stale by noon"
+      slot_role: open
+    - slot: 2
+      pressure: Can we update our belief after each labeled email without retraining
+        everything?
+      slot_role: deepen
+    - slot: 3
+      pressure: What do we believe *before* seeing today's batch?
+      slot_role: deepen
+    - slot: 4
+      pressure: How much should one misclassified email move us?
+      slot_role: deepen
+    - slot: 5
+      pressure: "We now have names for the pieces \u2014 but only because we needed\
+        \ them"
+      slot_role: earn_term
+    terminology_earned:
+    - prior
+    - likelihood
+    - posterior
+    - Bayes rule
+  - day: 3
+    beat: When updating can be done in closed form
+    concepts:
+    - conjugate_pairs
+    - beta_binomial
+    - analytical_tractability
+    night_lessons:
+    - slot: 1
+      pressure: Integrating over parameters by hand every night doesn't scale
+      slot_role: open
+    - slot: 2
+      pressure: "Spam rate in a folder looks like a coin-flip problem \u2014 can we\
+        \ exploit that?"
+      slot_role: deepen
+    - slot: 3
+      pressure: "Why does Beta \xD7 Binomial give us another Beta?"
+      slot_role: deepen
+    - slot: 4
+      pressure: When does this trick stop working?
+      slot_role: bridge
+    - slot: 5
+      pressure: Conjugacy is a convenience, not a law of nature
+      slot_role: earn_term
+    terminology_earned:
+    - conjugate pair
+    - Beta-Binomial
+  - day: 4
+    beat: When closed form breaks
+    concepts:
+    - intractable_posterior
+    - high_dimensional_features
+    - sampling_mindset
+    night_lessons:
+    - slot: 1
+      pressure: "10,000 word features \u2014 the Beta-Binomial story no longer fits"
+      slot_role: open
+    - slot: 2
+      pressure: "The posterior exists but we can't write it down \u2014 now what?"
+      slot_role: deepen
+    - slot: 3
+      pressure: Why not just point to the peak and call it a day?
+      slot_role: deepen
+    - slot: 4
+      pressure: If we can't integrate, can we *sample*?
+      slot_role: bridge
+    - slot: 5
+      pressure: Intractable doesn't mean unknowable
+      slot_role: earn_term
+    terminology_earned:
+    - intractable posterior
+  - day: 5
+    beat: "Markov chain prep \u2014 what makes a sequence memoryless"
+    topic_label: Stochastic Processes
+    prerequisite_for:
+    - mcmc_intuition
+    concepts:
+    - markov_chain
+    - stationarity_intuition
+    night_lessons:
+    - slot: 1
+      pressure: "Spam campaigns arrive in bursts \u2014 is tomorrow's volume independent\
+        \ of today's?"
+      slot_role: open
+    - slot: 2
+      pressure: If we only need today to predict tomorrow, what are we assuming about
+        the past?
+      slot_role: deepen
+    - slot: 3
+      pressure: What does it mean for a chain to 'forget' its starting point?
+      slot_role: deepen
+    - slot: 4
+      pressure: "Does the distribution of email types stabilize over time \u2014 and\
+        \ why does that matter?"
+      slot_role: deepen
+    - slot: 5
+      pressure: 'Stationarity and the Markov property: why MCMC needs both'
+      slot_role: earn_term
+    terminology_earned:
+    - Markov property
+    - stationary distribution
+  - day: 6
+    beat: "Markov chain mixing \u2014 how long before the chain forgets where it started"
+    topic_label: Stochastic Processes
+    prerequisite_for:
+    - mcmc_diagnostics
+    concepts:
+    - mixing_time
+    - ergodicity_light
+    night_lessons:
+    - slot: 1
+      pressure: "Two samplers start from opposite ends of the parameter space \u2014\
+        \ do they converge to the same answer?"
+      slot_role: open
+    - slot: 2
+      pressure: If the chain mixes slowly, are our samples honest draws from the posterior?
+      slot_role: deepen
+    - slot: 3
+      pressure: "What determines how quickly a chain mixes \u2014 and what slows it\
+        \ down?"
+      slot_role: deepen
+    - slot: 4
+      pressure: 'R-hat and ESS: what are they actually measuring?'
+      slot_role: deepen
+    - slot: 5
+      pressure: Mixing time as the hidden cost of MCMC
+      slot_role: earn_term
+    terminology_earned:
+    - mixing time
+    - ergodicity
+  - day: 7
+    beat: Approximating when exact is impossible
+    concepts:
+    - mcmc_intuition
+    - metropolis_hastings_sketch
+    night_lessons:
+    - slot: 1
+      pressure: "Sampling sounds random \u2014 how is that better than guessing?"
+      slot_role: open
+    - slot: 2
+      pressure: We need samples that actually look like the posterior, not noise
+      slot_role: deepen
+    - slot: 3
+      pressure: "Why a Markov chain \u2014 why not independent draws?"
+      slot_role: deepen
+    - slot: 4
+      pressure: How do we know the chain has forgotten its starting point?
+      slot_role: deepen
+    - slot: 5
+      pressure: MCMC as a mechanism, not a magic box
+      slot_role: earn_term
+    terminology_earned:
+    - MCMC
+    - Metropolis-Hastings sketch
+  upcoming_arc_preview:
+    id: spam-filter-margins
+    title: Abuse detection needs margins, not just probabilities
+    bridge_beat: "Leadership wants a new abuse-detection feature \u2014 separation\
+      \ matters, not just calibration"

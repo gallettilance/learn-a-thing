@@ -1,0 +1,143 @@
+date: '2026-06-26'
+night_type: arc
+pressure_invariant: inv-calibration
+mastery_rung: 2
+activate_edges:
+- E-calibration-hub
+- E-109
+- E-110
+- E-111
+arc_id: spam-filter-bayes
+topic_label: Bayesian Inference
+narrative_day: 1
+night_thread: "Overnight one more quarantine email gets a spam label on the two-hundred-email\
+  \ folder \u2014 before Priya retrains ten thousand word weights, show Marcus which\
+  \ count moves first and name prior, evidence, and updated folder belief."
+lessons:
+- slot: 1
+  slug: holdout-accuracy-wrong-memo-for-routing
+  topic_label: Bayesian Inference
+  concept: holdout_accuracy_is_wrong_memo_object_for_routing, predict_proba_is_a_per_email_claim_not_folder_composition,
+    reliability_diagram_as_bin_frequency_audit
+  pressure_question: ''
+  merged_from_slots:
+  - 1
+  - 2
+  - 3
+- slot: 2
+  slug: posterior-folder-belief-without-retrain
+  topic_label: Bayesian Inference
+  concept: folder_spam_rate_as_separate_estimand_from_per_email_scores
+  pressure_question: ''
+  merged_from_slots:
+  - 4
+- slot: 3
+  slug: folder-rate-vs-routing-score
+  topic_label: Logistic Regression
+  concept: tool_routing_under_inv_calibration
+  pressure_question: ''
+  merged_from_slots:
+  - 5
+lesson_groups:
+- publish_slot: 1
+  topic_label: Bayesian Inference
+  source_slots:
+  - 1
+  - 2
+  - 3
+  concepts:
+  - holdout_accuracy_is_wrong_memo_object_for_routing
+  - predict_proba_is_a_per_email_claim_not_folder_composition
+  - reliability_diagram_as_bin_frequency_audit
+  narrative_spine: "One story on the fixed two-hundred-email queue: name why holdout\
+    \ accuracy fails Product at the zero point nine threshold, trace Priya's zero\
+    \ point nine four on Q-041 to an honest per-email claim, then walk score-to-bin-to-count-to-observed-rate\
+    \ so the zero point nine four versus seventy-one percent gap is mechanism\u2014\
+    not vibes."
+  section_outline:
+  - 'Scene: quarantine queue, 148 spam / 52 ham, Product wants 0.9 auto-quarantine,
+    Legal wants proof'
+  - Why ninety-one point five percent accuracy is the wrong memo object for routing
+  - Where Q-041's score comes from and what honest would mean on that row
+  - 'Building the mechanism: sort scores into bins, count outcomes, compare claimed
+    to observed'
+  - The high-bin gap (0.94 claimed vs 71% observed) as audit proof the model is lying
+    to Product
+  omit_from_group:
+  - Repeated Scene cards after the opening
+  - "Folder spam rate or \u03B8 vocabulary"
+  - Wilson intervals on sparse bins
+  - Platt or isotonic remap mechanics
+  - Beta arithmetic or posterior update language
+  - Side tangent on TF-IDF beyond one Terms tonight line
+  optional: false
+  extended: true
+  target_words:
+  - 2700
+  - 4000
+  merged: true
+- topic_label: Bayesian Inference
+  source_slots:
+  - 4
+  concepts:
+  - folder_spam_rate_as_separate_estimand_from_per_email_scores
+  pressure_questions: []
+  narrative_beats: []
+  optional: false
+  extended: true
+  intro_pacing: normal
+  slot_roles: []
+  narrative_part: null
+  publish_slot: 2
+- topic_label: Logistic Regression
+  source_slots:
+  - 5
+  concepts:
+  - tool_routing_under_inv_calibration
+  pressure_questions: []
+  narrative_beats: []
+  optional: true
+  extended: true
+  intro_pacing: normal
+  slot_roles: []
+  narrative_part: null
+  publish_slot: 3
+published_lesson_count: 3
+sources_summary:
+- slot: 1
+  source_count: 7
+- slot: 2
+  source_count: 7
+- slot: 3
+  source_count: 7
+- slot: 4
+  source_count: 8
+- slot: 5
+  source_count: 8
+hypotheses_added:
+- H-155
+- H-156
+- H-157
+- H-158
+- H-159
+grapher_scores:
+  clarity: 4
+  mechanism_depth: 3
+  graph_integration: 3
+  learning_outcomes: 4
+  narrative_continuity: 5
+pedagogy_summary: "Tonight on the same two hundred quarantine emails you earned three\
+  \ separable audit clauses Leadership keeps collapsing: holdout accuracy cannot sign\
+  \ Product's 0.9 gate (high bin 0.94 claimed versus ~71% observed blocks auto-quarantine),\
+  \ folder spam rate updates as prior \u2192 one label \u2192 posterior on 148/52\
+  \ \u2192 149/51 without retraining word weights, and Marcus's composition memo does\
+  \ not greenlight Q-041 \u2014 the three-row routing table ties it together. Review\
+  \ by walking score \u2192 bin \u2192 count \u2192 compare on one email until the\
+  \ steps feel automatic, then rehearse which ledger column moves first when Marcus\
+  \ tags spam overnight. Tomorrow closes the Beta\u2013Binomial conjugacy proof with\
+  \ computed credible endpoints and opens what breaks when the unknown becomes ten\
+  \ thousand word weights instead of one folder rate."
+edges_added:
+- E-114
+- E-115
+generated_at: '2026-06-26T23:29:30.806065'

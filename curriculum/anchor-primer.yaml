@@ -1,0 +1,143 @@
+# Canonical standalone context for narrative anchors.
+# Every lesson must open from this (Scene card) — never assume the reader saw prior nights.
+# Site: /anchor/{id}.html · Agents: included in build_context_files().
+
+anchors:
+  spam-filter-bayes:
+    id: spam-filter-bayes
+    title: Spam filter audit — running story
+    one_line: Calibrated spam decisions on a fixed quarantine email queue
+
+    setting: >
+      You are the ML engineer on a corporate email product. A legacy keyword filter
+      is being replaced. Leadership and Legal care about *how sure* you are before
+      auto-quarantining mail — not just accuracy on a holdout set.
+
+    characters:
+      - id: you
+        name: You (ML engineer)
+        role: Owns models, explains numbers to Legal and Product
+      - id: priya
+        name: Priya
+        role: ML engineer who trains classifiers and ships overnight retrains
+      - id: marcus
+        name: Marcus (Legal counsel)
+        role: Signs audit memos; wants defensible intervals on folder spam rate
+      - id: product
+        name: Product / leadership
+        role: Wants auto-quarantine at threshold 0.9; cares about calibration in bins
+
+    fixed_anchor_data:
+      queue_name: quarantine folder
+      labeled_batch_size: 200
+      spam_labels: 148
+      ham_labels: 52
+      label_rate: 0.74
+      auto_quarantine_threshold: 0.9
+      classifier: ridge-regularized logistic regression on TF-IDF word features
+      feature_spec: >
+        Each email becomes a sparse vector of about 10,000 word scores from
+        sklearn-style TF-IDF (term frequency × inverse document frequency on the
+        training vocabulary). This is NOT an SVD embedding or neural embedding —
+        it is one weight per vocabulary word. Logistic regression learns one
+        coefficient per word plus an intercept.
+      holdout_accuracy_example: 91.5%
+
+    story_beats:
+      - day: 1
+        summary: >
+          Point estimates fail — Product rejects spam/ham without confidence;
+          calibration means predicted probabilities should match observed spam rates in bins.
+        key_idea: uncertainty and calibration as product requirements
+      - day: 2
+        summary: >
+          Bayes rule on the anchor — prior, likelihood, posterior as language for
+          updating belief after each labeled email (conceptual; not full formalism yet).
+        key_idea: update beliefs with evidence
+      - day: 3
+        summary: >
+          Folder spam rate θ treated as one unknown between 0 and 1. Beta prior +
+          binomial likelihood → Beta posterior (e.g. Beta(192,68) after 148 spam / 52 ham).
+          Closed-form credible band for Legal without simulation.
+        key_idea: conjugate Beta–Binomial on folder rate θ
+        canonical_numbers:
+          prior: Beta(162, 58)
+          posterior: Beta(192, 68)
+          posterior_mean: 0.74
+      - day: 4
+        summary: >
+          Priya retrains with 10k TF-IDF logistic on the same 200 rows. Conjugacy
+          breaks — Legal still wants folder rate with interval; MAP and Platt don't
+          replace posterior integration; Monte Carlo enters as approximate integral.
+        key_idea: high-dimensional β breaks Beta ledger; sampling replaces closed form
+      - day: 5
+        summary: >
+          Legal asks whether overnight simulations are honest: each draw must be a
+          weight vector that still fits the 148 spam / 52 ham labels, not random jitter.
+          When exact averaging is impossible in many dimensions, we use dependent
+          small-step exploration instead of independent proposals; diagnostics tell
+          mixing failure from real uncertainty; routing scores and audit integrals
+          are different memo clauses.
+        key_idea: honest draws, audit diagnostics, routing vs integral footnotes
+
+    terms:
+      - term: quarantine folder
+        plain: A holding bin of emails pulled aside for review before release or block
+      - term: folder spam rate θ
+        plain: >
+          One number between 0 and 1 — if you pick a random email from this folder,
+          what fraction are actually spam? (Not the same as average predict_proba.)
+      - term: TF-IDF
+        plain: >
+          A sparse list of ~10,000 word importance scores per email (high = word is
+          distinctive for that message relative to the corpus). Feeds logistic regression
+          — not a dense embedding from SVD or a neural net unless we say so explicitly.
+      - term: logistic regression / predict_proba
+        plain: >
+          Model outputs a per-email spam probability score in (0,1) from word weights;
+          threshold 0.9 means auto-quarantine when score ≥ 0.9.
+      - term: ridge penalty
+        plain: >
+          Frequentist name for keeping word weights small (L2); Bayesian cousin is
+          Gaussian prior on β.
+      - term: Beta–Binomial
+        plain: >
+          When the only unknown is folder rate θ, count spam/ham labels and update
+          a Beta curve on [0,1] without MCMC.
+      - term: credible interval
+        plain: >
+          Range of θ values still plausible after seeing data (Bayesian band on the
+          rate itself).
+      - term: MAP
+        plain: >
+          Single best-fit weight vector β̂ from optimization — a peak, not a spread.
+      - term: Platt scaling
+        plain: >
+          Post-hoc remap of sigmoid scores so bin-averaged predictions match observed
+          spam fractions on holdout — fixes routing scores, not full β uncertainty.
+      - term: Monte Carlo
+        plain: >
+          Approximate a hard average by drawing many plausible cases and averaging
+          (here: draw β from posterior, compute folder rate each time).
+      - term: weight vector β
+        plain: >
+          The full list of logistic coefficients (one per TF-IDF word plus intercept).
+          D = the 200 labeled emails and their spam/ham tags. P(β|D) means "plausible
+          weight vectors after seeing those labels" — not a single best fit.
+      - term: quarantine email
+        plain: >
+          One message held in the review folder before Product auto-blocks or releases it;
+          the 200-email batch is a labeled sample from that folder.
+
+    precision_rules:
+      - Never say "embedding" for TF-IDF logistic unless you mean a different representation.
+      - Distinguish per-email score σ(β·x), folder rate θ, and average of scores μ(β).
+      - Say "148 spam and 52 ham out of 200 labeled emails" — not "last night's ledger" without recap.
+
+    reference_pages:
+      - label: Anchor primer (full story & glossary)
+        path: /anchor/spam-filter-bayes.html
+      - label: Narrative arc (planned beats)
+        path: /arc.html
+      - label: Concept graph
+        path: /graph.html

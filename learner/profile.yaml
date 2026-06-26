@@ -1,0 +1,142 @@
+background: >
+  PhD in data science. Strong applied ML, experimental design, and training-loop
+  optimization. Weak formal statistics theory — Bayesian inference beyond basics,
+  MCMC diagnostics, variational inference, quadratic programming / KKT,
+  measure-theoretic probability.
+
+known_anchors:
+  - sklearn workflows (fit/predict, pipelines, cross-validation)
+  - PyMC / Stan (used but not deeply understood)
+  - SVM and margin-based classifiers
+  - Linear models and regularization (ridge, lasso — frequentist framing)
+  - Experimental design and A/B testing intuition
+  - Gradient-based optimization in neural network training
+
+blind_spots:
+  - Bayesian inference (full posterior reasoning, MCMC/VI, not just MAP)
+  - Monte Carlo methods (variance reduction, when simulation beats closed form)
+  - Stochastic processes (Markov structure, stationarity, ergodicity)
+  - Time series (forecasting vs inference, temporal dependence)
+  - Linear and quadratic optimization (KKT, duality, constrained QP)
+  - Transformers (attention as mechanism, not architecture tour)
+  - LLMs (scaling, inference, alignment pressures in production)
+  - Quantum computing (qubits, gates, measurement — bridge from linear algebra)
+
+# Topics already taught — curator should not re-teach at intro level
+seeded_topics:
+  - Logistic Regression
+  - Neural Networks
+  - Clustering
+  - Optimization
+  - Hypothesis Testing
+  - Support Vector Machines
+  - Correlation
+  - Distance Functions
+  - KNN
+  - Decision Trees
+  - Naive Bayes
+  - Linear Regression
+  - SVD
+  - GMM
+  - General Modeling
+
+# Up-next priorities (ordered). Slot-5 bridge nights rotate through non-arc items.
+# phase_id links each interest to curriculum/master-spine.yaml.
+curriculum_interests:
+  - topic: Monte Carlo
+    phase_id: phase-inference
+    pressure: When closed-form posteriors fail, what does simulation buy us — and at what variance cost?
+    priority: high
+  - topic: Stochastic Processes
+    phase_id: phase-dynamics
+    pressure: Email arrival, click streams, and queue backlogs — when is tomorrow independent of today?
+    priority: high
+  - topic: Time Series
+    phase_id: phase-dynamics
+    pressure: Priya asks for next-week spam volume — why can't we shuffle emails like i.i.d. draws?
+    priority: high
+  - topic: Linear and Quadratic Optimization
+    phase_id: phase-optimization
+    pressure: Margin SVMs and constrained thresholds both hit KKT — same geometry, different story?
+    priority: high
+  - topic: Transformers
+    phase_id: phase-representation
+    pressure: Retrieval and ranking need context — why does pairwise attention beat fixed features?
+    priority: high
+  - topic: LLMs
+    phase_id: phase-scale
+    pressure: Legal wants policy-grounded drafts — what breaks when we treat the model as oracle?
+    priority: high
+  - topic: Quantum Computing
+    phase_id: phase-substrate
+    pressure: Superposition and measurement as the limit of classical simulation — when does quantum help?
+    priority: high
+  - topic: Bayesian Inference
+    phase_id: phase-inference
+    pressure: Deepen posterior updating, conjugacy breaks, and calibration on the spam arc
+    priority: high
+  - topic: SVD
+    phase_id: phase-representation
+    pressure: Connect Eckart–Young truncation to denoising and latent semantics
+    priority: medium
+  - topic: Correlation
+    phase_id: phase-decision
+    pressure: When does linear association mislead feature selection and causal claims?
+    priority: low
+
+# Weekly exploration interests — one night/week far from stats/ML spine
+exploration_interests:
+  - quantum computing
+  - quantum physics
+  - physics
+  - chemistry
+  - biology
+  - hardware
+
+exploration_config: curriculum/exploration-topics.yaml
+
+teaching_style: learner/teaching-style.md
+
+preferences:
+  - problem-first exposition
+  - one continuous narrative anchor per night
+  - mechanism over terminology
+  - guided reconstruction, not lecture notes
+  - anticipated confusion addressed in trap order
+
+avoid:
+  - definition-first exposition
+  - unrelated examples within or across lessons
+  - terminology before mechanism
+  - algebra-as-performance
+  - repeating introductory ML
+  - Naive Bayes intro or refresher — already owned
+
+notes:
+  - "2026-06-26: Naive Bayes mastered. Priority queue — Bayesian inference (arc), Monte Carlo, stochastic processes, time series, linear/quadratic optimization, transformers, LLMs, quantum computing."
+  - "2026-06-26: Bayesian Inference and Monte Carlo are true beginners through this system — not in seeded_topics; require gentle intro pacing (bridge from frequentist/logistic intuition before formal posteriors or simulation variance)."
+  - "2026-06-26: Slogan-level Bayes fails — e.g. 'keep a distribution over what you don't know' without naming θ, showing 148/52 counts, freq vs Bayes side-by-side, and why Legal wants a band. Must answer: what distribution, which to pick (first rule), why this view, how different from frequentist."
+  - "2026-06-26: Lessons must be standalone YouTube-style — Scene card + Terms tonight every time; never assume prior nights read. TF-IDF = sparse word scores to logistic, not SVD embedding unless stated."
+
+# Topics not yet studied here (not in seeded_topics or mastered-topics.yaml).
+# Curator/teacher: first lesson on each label uses intro_pacing gentle — see teaching-style.md.
+true_beginner_topics:
+  - Bayesian Inference
+  - Monte Carlo
+  - Stochastic Processes
+
+# Prerequisite gate stops here — never schedule nights below this floor.
+# Treated as mastered for dependency resolution only (not "skip all lessons").
+assumed_foundations:
+  note: >
+    Basic literacy, arithmetic, and PhD-level math you already use daily.
+    The gate will not recurse past these even if the concept graph grows.
+  concepts:
+    - basic_literacy
+    - basic_arithmetic
+    - basic_algebra
+    - vectors_and_matrices
+    - first_order_derivatives
+    - basic_probability
+    - english_technical_reading
+  topics: []

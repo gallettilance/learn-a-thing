@@ -1,0 +1,34 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "CuratorOutput",
+  "type": "object",
+  "required": ["date", "arc_id", "narrative_day", "night_thread", "lessons"],
+  "properties": {
+    "date": { "type": "string" },
+    "arc_id": { "type": "string" },
+    "narrative_day": { "type": "integer" },
+    "night_thread": { "type": "string" },
+    "lessons": {
+      "type": "array",
+      "minItems": 5,
+      "maxItems": 5,
+      "items": {
+        "type": "object",
+        "required": ["slot", "slug", "pressure_question", "narrative_beat", "concept", "slot_role"],
+        "properties": {
+          "slot": { "type": "integer", "minimum": 1, "maximum": 5 },
+          "slug": { "type": "string" },
+          "pressure_question": { "type": "string" },
+          "narrative_beat": { "type": "string" },
+          "concept": { "type": "string" },
+          "formalism_needed": { "type": "boolean" },
+          "formalism_what": { "type": "string" },
+          "connects_to": { "type": "array", "items": { "type": "string" } },
+          "slot_role": { "enum": ["open", "deepen", "earn_term", "bridge"] }
+        }
+      }
+    },
+    "topic_queue": { "type": "object" },
+    "narrative_arc_patch": { "type": "object" }
+  }
+}
